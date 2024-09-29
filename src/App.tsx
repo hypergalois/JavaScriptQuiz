@@ -1,7 +1,7 @@
-import { useState } from "react";
-import "./App.css";
-import JavaScriptLogo from "./components/JavaScriptLogo";
+import "@/App.css";
+import JavaScriptLogo from "@/components/JavaScriptLogo";
 import { Container, Stack, Typography } from "@mui/material";
+import Start from "@/components/Start";
 
 function App() {
 	return (
@@ -13,6 +13,8 @@ function App() {
 						JavaScript Quiz
 					</Typography>
 				</Stack>
+
+				<Start />
 			</Container>
 		</main>
 	);
