@@ -9,6 +9,7 @@ interface QuestionsState {
   fetchQuestions: (limit: number) => Promise<void>;
   selectAnswer: (questionId: number, answerIndex: number) => void;
   getNextQuestion: () => void;
+  getPreviousQuestion: () => void;
 }
 
 export const useQuestionsStore = create<QuestionsState>(
@@ -51,6 +52,15 @@ export const useQuestionsStore = create<QuestionsState>(
 
       if (nextQuestion < questions.length) {
         set({ currentQuestion: nextQuestion });
+      }
+    },
+    getPreviousQuestion: () => {
+      const { currentQuestion } = get();
+
+      const previousQuestion = currentQuestion - 1;
+
+      if (previousQuestion >= 0) {
+        set({ currentQuestion: previousQuestion });
       }
     },
   }),
