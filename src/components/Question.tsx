@@ -22,6 +22,21 @@ const Question = ({ info }: { info: QuestionType }) => {
     selectAnswer(info.id, answerIndex);
   };
 
+  const getBackgroundColor = (index: number) => {
+    const { userSelectedAnswer, correctAnswer } = info;
+
+    if (userSelectedAnswer == null) return '#444';
+
+    if (index !== correctAnswer && index !== userSelectedAnswer)
+      return '#444';
+
+    if (index === correctAnswer) return 'green';
+
+    if (index === userSelectedAnswer) return 'red';
+
+    return '#444';
+  };
+
   return (
     <Card
       variant="outlined"
@@ -41,11 +56,12 @@ const Question = ({ info }: { info: QuestionType }) => {
         {info.answers.map((answer, index) => (
           <ListItem key={index}>
             <ListItemButton
+              disabled={info.userSelectedAnswer != null}
               onClick={() => handleClick(index)}
               variant="contained"
               sx={{
                 width: '100%',
-                bgcolor: '#444',
+                bgcolor: getBackgroundColor(index),
               }}
             >
               <ListItemText
