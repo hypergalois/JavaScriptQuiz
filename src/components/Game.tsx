@@ -5,6 +5,7 @@ import {
   ArrowBackIosNew,
   ArrowForwardIos,
 } from '@mui/icons-material';
+import Footer from './Footer';
 
 export default function Game() {
   const questions = useQuestionsStore((state) => state.questions);
@@ -46,6 +47,7 @@ export default function Game() {
         </IconButton>
       </Stack>
       <Question info={questionInfo} />
+      <Footer />
     </>
   );
 }
