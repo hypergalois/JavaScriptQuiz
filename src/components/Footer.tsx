@@ -1,9 +1,10 @@
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { useQuestionsStore } from '../store/questions';
 import useQuestionsData from '../hooks/useQuestionsData.ts';
 
 export default function Footer() {
   const questions = useQuestionsStore((state) => state.questions);
+  const reset = useQuestionsStore((state) => state.reset);
 
   const { correct, incorrect, unanswered } =
     useQuestionsData(questions);
@@ -14,6 +15,7 @@ export default function Footer() {
         ✅ Correct: {correct} - ❌ Incorrect: {incorrect} - 🤷‍♂️
         Unanswered: {unanswered}
       </Typography>
+      <Button onClick={() => reset()}>Resetear la quiz</Button>
     </footer>
   );
 }
