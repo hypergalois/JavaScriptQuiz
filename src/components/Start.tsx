@@ -1,18 +1,24 @@
-import { Button } from "@mui/material";
-import { useQuestionsStore } from "../store/questions";
+import { Button } from '@mui/material';
+import { useQuestionsStore } from '../store/questions';
 
 const LIMIT_QUESTIONS = 5;
 
 export default function Start() {
-	const fetchQuestions = useQuestionsStore((state) => state.fetchQuestions)
+  const fetchQuestions =
+    useQuestionsStore(
+      (state) => state.fetchQuestions,
+    );
 
-	const handleClick = () => {
-		fetchQuestions(LIMIT_QUESTIONS)
-	}
+  const handleClick = () => {
+    fetchQuestions(LIMIT_QUESTIONS);
+  };
 
-	return (
-		<Button onClick={handleClick} variant="contained">
-			¡Empezar!
-		</Button>
-	);
+  return (
+    <Button
+      onClick={handleClick}
+      variant="contained"
+    >
+      ¡Empezar!
+    </Button>
+  );
 }
