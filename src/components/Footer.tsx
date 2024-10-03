@@ -1,25 +1,12 @@
 import { Typography } from '@mui/material';
 import { useQuestionsStore } from '../store/questions';
+import useQuestionsData from '../hooks/useQuestionsData.ts';
 
 export default function Footer() {
   const questions = useQuestionsStore((state) => state.questions);
-  let correct = 0,
-    incorrect = 0,
-    unanswered = 0;
 
-  questions.forEach((question) => {
-    const { userSelectedAnswer, correctAnswer } = question;
-
-    if (userSelectedAnswer != null) {
-      if (userSelectedAnswer === correctAnswer) {
-        correct++;
-      } else {
-        incorrect++;
-      }
-    } else {
-      unanswered++;
-    }
-  });
+  const { correct, incorrect, unanswered } =
+    useQuestionsData(questions);
 
   return (
     <footer>
