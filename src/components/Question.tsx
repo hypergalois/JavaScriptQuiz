@@ -4,6 +4,8 @@ import {
   Typography,
   List,
   ListItem,
+  ListItemButton,
+  ListItemText,
 } from '@mui/material';
 import { type Question as QuestionType } from '../types';
 
@@ -19,7 +21,7 @@ const Question = ({
     <Card
       variant="outlined"
       sx={{
-        textAlign: 'left',
+        textAlign: 'center',
         bgcolor: '#222',
         padding: 2,
       }}
@@ -39,15 +41,20 @@ const Question = ({
         {info.answers.map(
           (answer, index) => (
             <ListItem key={index}>
-              <Button
+              <ListItemButton
                 variant="contained"
                 sx={{
                   width: '100%',
                   bgcolor: '#444',
                 }}
               >
-                {answer}
-              </Button>
+                <ListItemText
+                  sx={{
+                    textAlign: 'center',
+                  }}
+                  primary={answer}
+                />
+              </ListItemButton>
             </ListItem>
           ),
         )}
