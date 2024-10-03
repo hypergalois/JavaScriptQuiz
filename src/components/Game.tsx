@@ -40,8 +40,7 @@ export default function Game() {
         </Typography>
         <IconButton
           onClick={goNextQuestion}
-          // TODO poner esto con const
-          disabled={currentQuestion === 4}
+          disabled={currentQuestion === questions.length - 1}
         >
           <ArrowForwardIos />
         </IconButton>
