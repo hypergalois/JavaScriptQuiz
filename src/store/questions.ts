@@ -1,11 +1,14 @@
 import { create } from 'zustand';
 import { Question } from '@/types';
 
+import confetti from 'canvas-confetti';
+
 interface QuestionsState {
   questions: Question[];
   currentQuestion: number;
   fetchQuestions: (limit: number) => Promise<void>;
   selectAnswer: (questionId: number, answerIndex: number) => void;
+  getNextQuestion: () => void;
 }
 
 export const useQuestionsStore = create<QuestionsState>(
@@ -26,6 +29,8 @@ export const useQuestionsStore = create<QuestionsState>(
       set((state) => {
         const questions = state.questions.map((question) => {
           if (question.id === questionId) {
+            if (question.correctAnswer === answerIndex) confetti();
+
             return {
               ...question,
               userSelectedAnswer: answerIndex,
@@ -38,6 +43,15 @@ export const useQuestionsStore = create<QuestionsState>(
 
         return { questions };
       });
+    },
+    getNextQuestion: () => {
+      const { currentQuestion, questions } = get();
+
+      const nextQuestion = currentQuestion + 1;
+
+      if (nextQuestion < questions.length) {
+        set({ currentQuestion: nextQuestion });
+      }
     },
   }),
 );
