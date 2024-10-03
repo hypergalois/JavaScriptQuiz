@@ -14,8 +14,9 @@ import { gradientDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useQuestionsStore } from '../store/questions';
 
 const Question = ({ info }: { info: QuestionType }) => {
-
-  const selectAnswer = useQuestionsStore((state)) => state.selectAnswer)
+  const selectAnswer = useQuestionsStore(
+    (state) => state.selectAnswer,
+  );
 
   return (
     <Card
