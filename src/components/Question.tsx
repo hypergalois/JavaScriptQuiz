@@ -12,11 +12,7 @@ import { type Question as QuestionType } from '../types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gradientDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-const Question = ({
-  info,
-}: {
-  info: QuestionType;
-}) => {
+const Question = ({ info }: { info: QuestionType }) => {
   return (
     <Card
       variant="outlined"
@@ -26,38 +22,31 @@ const Question = ({
         padding: 2,
       }}
     >
-      <Typography variant="h5">
-        {info.question}
-      </Typography>
+      <Typography variant="h5">{info.question}</Typography>
 
-      <SyntaxHighlighter
-        language="javascript"
-        style={gradientDark}
-      >
+      <SyntaxHighlighter language="javascript" style={gradientDark}>
         {info.code}
       </SyntaxHighlighter>
 
       <List sx={{ bgcolor: '#333' }}>
-        {info.answers.map(
-          (answer, index) => (
-            <ListItem key={index}>
-              <ListItemButton
-                variant="contained"
+        {info.answers.map((answer, index) => (
+          <ListItem key={index}>
+            <ListItemButton
+              variant="contained"
+              sx={{
+                width: '100%',
+                bgcolor: '#444',
+              }}
+            >
+              <ListItemText
                 sx={{
-                  width: '100%',
-                  bgcolor: '#444',
+                  textAlign: 'center',
                 }}
-              >
-                <ListItemText
-                  sx={{
-                    textAlign: 'center',
-                  }}
-                  primary={answer}
-                />
-              </ListItemButton>
-            </ListItem>
-          ),
-        )}
+                primary={answer}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Card>
   );
