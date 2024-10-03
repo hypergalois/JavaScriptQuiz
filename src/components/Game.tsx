@@ -7,6 +7,12 @@ export default function Game() {
   const currentQuestion = useQuestionsStore(
     (state) => state.currentQuestion,
   );
+  const goNextQuestion = useQuestionsStore(
+    (state) => state.goNextQuestion,
+  );
+  const goPreviousQuestion = useQuestionsStore(
+    (state) => state.goPreviousQuestion,
+  );
 
   const questionInfo = questions[currentQuestion];
 

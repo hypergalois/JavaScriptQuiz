@@ -8,8 +8,8 @@ interface QuestionsState {
   currentQuestion: number;
   fetchQuestions: (limit: number) => Promise<void>;
   selectAnswer: (questionId: number, answerIndex: number) => void;
-  getNextQuestion: () => void;
-  getPreviousQuestion: () => void;
+  goNextQuestion: () => void;
+  goPreviousQuestion: () => void;
 }
 
 export const useQuestionsStore = create<QuestionsState>(
@@ -45,7 +45,7 @@ export const useQuestionsStore = create<QuestionsState>(
         return { questions };
       });
     },
-    getNextQuestion: () => {
+    goNextQuestion: () => {
       const { currentQuestion, questions } = get();
 
       const nextQuestion = currentQuestion + 1;
@@ -54,7 +54,7 @@ export const useQuestionsStore = create<QuestionsState>(
         set({ currentQuestion: nextQuestion });
       }
     },
-    getPreviousQuestion: () => {
+    goPreviousQuestion: () => {
       const { currentQuestion } = get();
 
       const previousQuestion = currentQuestion - 1;
