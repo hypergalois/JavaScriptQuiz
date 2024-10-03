@@ -7,6 +7,10 @@ interface QuestionsState {
   fetchQuestions: (
     limit: number,
   ) => Promise<void>;
+  selectAnswer: (
+    questionId: number,
+    answerIndex: number,
+  ) => void;
 }
 
 export const useQuestionsStore =
