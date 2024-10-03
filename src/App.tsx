@@ -5,8 +5,9 @@ import Start from "@/components/Start";
 import { useQuestionsStore } from "@/store/questions";
 
 function App() {
+
 	const questions = useQuestionsStore((state) => state.questions);
-	console.log(questions);
+	console.log(questions)
 
 	return (
 		<main>
@@ -18,7 +19,7 @@ function App() {
 					</Typography>
 				</Stack>
 
-				<Start />
+				{questions.length === 0 ? <Start /> : <p>Questions loaded</p>}
 			</Container>
 		</main>
 	);
