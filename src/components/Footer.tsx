@@ -23,11 +23,9 @@ export default function Footer() {
 
   return (
     <footer>
-      <Typography variant="h6" component="h2">
-        <strong>
-          ✅ Correct: {correct} ❌ Incorrect: {incorrect} 🤷‍♂️
-          Unanswered: {unanswered}
-        </strong>
+      <Typography variant="h6" component="h3">
+        ✅ Correct: {correct} - ❌ Incorrect: {incorrect} - 🤷‍♂️
+        Unanswered: {unanswered}
       </Typography>
     </footer>
   );
