@@ -3,10 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-import {
-  ThemeProvider,
-  createTheme,
-} from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import '@fontsource/roboto/300.css';
@@ -20,9 +17,7 @@ const darkTheme = createTheme({
   },
 });
 
-createRoot(
-  document.getElementById('root')!,
-).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
