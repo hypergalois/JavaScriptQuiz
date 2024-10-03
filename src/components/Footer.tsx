@@ -15,7 +15,9 @@ export default function Footer() {
         ✅ Correct: {correct} - ❌ Incorrect: {incorrect} - 🤷‍♂️
         Unanswered: {unanswered}
       </Typography>
-      <Button onClick={() => reset()}>Resetear la quiz</Button>
+      <div style={{ marginTop: '16px' }}>
+        <Button onClick={() => reset()}>Resetear la quiz</Button>
+      </div>
     </footer>
   );
 }
