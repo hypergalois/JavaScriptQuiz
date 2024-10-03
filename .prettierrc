@@ -1,0 +1,19 @@
+{
+  "printWidth": 40,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "proseWrap": "preserve",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "trailingComma": "all",
+  "singleQuote": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "overrides": [
+    {
+      "files": "*.jsx",
+      "options": {
+        "printWidth": 30
+      }
+    }
+  ]
+}
