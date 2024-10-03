@@ -13,6 +13,21 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gradientDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useQuestionsStore } from '../store/questions';
 
+const getBackgroundColor = (info: QuestionType, index: number) => {
+  const { userSelectedAnswer, correctAnswer } = info;
+
+  if (userSelectedAnswer == null) return '#444';
+
+  if (index !== correctAnswer && index !== userSelectedAnswer)
+    return '#444';
+
+  if (index === correctAnswer) return 'green';
+
+  if (index === userSelectedAnswer) return 'red';
+
+  return '#444';
+};
+
 const Question = ({ info }: { info: QuestionType }) => {
   const selectAnswer = useQuestionsStore(
     (state) => state.selectAnswer,
@@ -20,21 +35,6 @@ const Question = ({ info }: { info: QuestionType }) => {
 
   const handleClick = (answerIndex: number) => {
     selectAnswer(info.id, answerIndex);
-  };
-
-  const getBackgroundColor = (index: number) => {
-    const { userSelectedAnswer, correctAnswer } = info;
-
-    if (userSelectedAnswer == null) return '#444';
-
-    if (index !== correctAnswer && index !== userSelectedAnswer)
-      return '#444';
-
-    if (index === correctAnswer) return 'green';
-
-    if (index === userSelectedAnswer) return 'red';
-
-    return '#444';
   };
 
   return (
@@ -61,7 +61,7 @@ const Question = ({ info }: { info: QuestionType }) => {
               variant="contained"
               sx={{
                 width: '100%',
-                bgcolor: getBackgroundColor(index),
+                bgcolor: getBackgroundColor(info, index),
               }}
             >
               <ListItemText
