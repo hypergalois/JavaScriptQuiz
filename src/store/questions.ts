@@ -35,5 +35,21 @@ export const useQuestionsStore =
 
         set({ questions });
       },
+      selectAnswer: (
+        questionId: number,
+        answerIndex: number,
+      ) => {
+        const questions =
+          get().questions;
+        const question = questions.find(
+          (q) => q.id === questionId,
+        );
+        if (!question) {
+          return;
+        }
+        question.selectedAnswer =
+          answerIndex;
+        set({ questions });
+      },
     }),
   );
