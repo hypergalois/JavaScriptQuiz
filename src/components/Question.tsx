@@ -18,6 +18,10 @@ const Question = ({ info }: { info: QuestionType }) => {
     (state) => state.selectAnswer,
   );
 
+  const handleClick = (answerIndex: number) => {
+    selectAnswer(info.id, answerIndex);
+  };
+
   return (
     <Card
       variant="outlined"
@@ -37,6 +41,7 @@ const Question = ({ info }: { info: QuestionType }) => {
         {info.answers.map((answer, index) => (
           <ListItem key={index}>
             <ListItemButton
+              onClick={() => handleClick(index)}
               variant="contained"
               sx={{
                 width: '100%',

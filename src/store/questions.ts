@@ -28,8 +28,9 @@ export const useQuestionsStore = create<QuestionsState>(
           if (question.id === questionId) {
             return {
               ...question,
-              selectedAnswer: answerIndex,
-              isCorrectAnswer: question.correctAnswer === answerIndex,
+              userSelectedAnswer: answerIndex,
+              isCorrectUserAnswer:
+                question.correctAnswer === answerIndex,
             };
           }
           return question;
