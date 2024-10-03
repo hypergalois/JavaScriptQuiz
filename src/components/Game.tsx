@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography, Stack } from '@mui/material';
 import { useQuestionsStore } from '../store/questions';
 import Question from './Question';
 
@@ -17,8 +17,8 @@ export default function Game() {
   const questionInfo = questions[currentQuestion];
 
   return (
-    <>
+    <Stack direction="row" gap={2} alignItems="center">
       <Question info={questionInfo} />
-    </>
+    </Stack>
   );
 }
