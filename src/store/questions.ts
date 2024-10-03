@@ -39,17 +39,29 @@ export const useQuestionsStore =
         questionId: number,
         answerIndex: number,
       ) => {
-        const questions =
-          get().questions;
-        const question = questions.find(
-          (q) => q.id === questionId,
-        );
-        if (!question) {
-          return;
-        }
-        question.selectedAnswer =
-          answerIndex;
-        set({ questions });
+        set((state) => {
+          const questions =
+            state.questions.map(
+              (question) => {
+                if (
+                  question.id ===
+                  questionId
+                ) {
+                  return {
+                    ...question,
+                    selectedAnswer:
+                      answerIndex,
+                    isCorrectAnswer:
+                      question.correctAnswer ===
+                      answerIndex,
+                  };
+                }
+                return question;
+              },
+            );
+
+          return { questions };
+        });
       },
     }),
   );
